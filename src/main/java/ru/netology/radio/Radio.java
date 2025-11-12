@@ -1,8 +1,8 @@
 package ru.netology.radio;
 
 public class Radio {
-    public int stationId;
-    public int volume;
+    private int stationId;
+    private int volume;
 
     public void setStationId(int stationId) {
         if (stationId >= 0 && stationId <= 9) {
