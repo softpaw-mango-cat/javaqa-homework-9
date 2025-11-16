@@ -3,13 +3,21 @@ package ru.netology.radio;
 public class Radio {
     private int stationId;
     private int volume;
+    private int stationAmount;
+
+    public Radio(int stationAmount) {
+        this.stationAmount = stationAmount;
+    }
+
+    public Radio() {
+        this.stationAmount = 10;
+    }
 
     public void setStationId(int stationId) {
-        if (stationId >= 0 && stationId <= 9) {
-            this.stationId = stationId;
-        } else {
+        if (stationId < 0) {
             this.stationId = 0;
-            System.out.println("Номер радиостанции должен быть от 0 до 9");
+        } else {
+            this.stationId = stationId;
         }
     }
 
@@ -32,7 +40,8 @@ public class Radio {
     }
 
     public void next() {
-        if (stationId == 9) {
+        int maxStationId = stationAmount - 1;
+        if (stationId == maxStationId) {
             stationId = 0;
         } else {
             stationId++;
@@ -40,12 +49,14 @@ public class Radio {
     }
 
     public void prev() {
+        int maxStationId = stationAmount - 1;
         if (stationId == 0) {
-            stationId = 9;
+            stationId = maxStationId;
         } else {
             stationId--;
         }
     }
+
 
     public void volumeUp() {
         if (volume < 100) {
